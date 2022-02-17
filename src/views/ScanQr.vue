@@ -77,7 +77,7 @@
                       id="radioOne"
                       name="status"
                     />
-                    <label for="radioOne" class="radio">In</label>
+                    <label for="radioOne" class="radio">Stock-In</label>
                   </div>
                   <div>
                     <input
@@ -86,7 +86,7 @@
                       id="radioTwo"
                       name="status"
                     />
-                    <label for="radioTwo" class="radio">Out</label>
+                    <label for="radioTwo" class="radio">Stock-Out</label>
                   </div>
                 </div>
                 <button class="button" @click.prevent="addStock()">
@@ -340,6 +340,7 @@ export default {
 
 <style scoped>
 #app {
+  /* background-color: rgb(222, 240, 240); */
   color: #404040;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -347,8 +348,8 @@ export default {
   /*text-align: center;*/
   color: #2c3e50;
   margin-top: 40px;
-  margin-left: 60px;
-  margin-right: 60px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .table-title {

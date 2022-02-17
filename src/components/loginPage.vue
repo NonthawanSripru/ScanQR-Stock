@@ -181,6 +181,9 @@ export default {
 };
 </script>
 <style scoped>
+#app{
+  background-color: rgb(222, 240, 240);
+}
 .v-btn,
 .v-card {
   border-radius: 4px;
