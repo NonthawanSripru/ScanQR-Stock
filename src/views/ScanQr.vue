@@ -17,7 +17,7 @@
             <qrcode-stream @decode="onDecode" @init="onInit" />
             <div class="card-body">
               <p class="card-text">
-                Please scan the qrcode of product for registed product to stock
+                Please scan QR code of product for add product to stock
               </p>
               <hr />
               <div class="alert" :class="alert" role="alert">
@@ -77,7 +77,7 @@
                       id="radioOne"
                       name="status"
                     />
-                    <label for="radioOne" class="radio">Stock-in</label>
+                    <label for="radioOne" class="radio">In</label>
                   </div>
                   <div>
                     <input
@@ -86,7 +86,7 @@
                       id="radioTwo"
                       name="status"
                     />
-                    <label for="radioTwo" class="radio">Stock-out</label>
+                    <label for="radioTwo" class="radio">Out</label>
                   </div>
                 </div>
                 <button class="button" @click.prevent="addStock()">
@@ -370,7 +370,10 @@ body {
   height: 100%;
 }
 body,
-input,
+input[type=text], input[type=number], input[type=radio], select, textarea {
+  width: 100%;
+  resize: vertical;
+}
 select {
   padding: 0;
   margin-left: 2;
@@ -418,7 +421,7 @@ select {
   border-bottom: 1px solid #095484;
 }
 input::placeholder {
-  color: #095484;
+  color: #095484
 }
 option {
   background: #eee;
@@ -464,7 +467,7 @@ input[type="radio"]:checked + label:after {
 }
 button {
   display: block;
-  width: 200px;
+  width: 150px;
   padding: 10px;
   margin: 20px auto 0;
   border: none;
