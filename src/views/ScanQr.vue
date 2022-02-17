@@ -2,67 +2,98 @@
   <div id="app">
     <table>
       <tr>
-        <span class="table-title"><b>Scan product for stock</b></span>
+        <span class="table-title"><b>Scan QR for stock</b></span>
         <br />
         <span class="table-desc"
-          >User: <span class="vue-font">{{email}}</span>
+          >User: <span class="vue-font">{{ email }}</span>
         </span>
       </tr>
     </table>
     <hr />
     <div class="row mb-15">
+      <div class="col-md-4 mt-10">
+        <v-card>
+          <v-container>
+            <qrcode-stream @decode="onDecode" @init="onInit" />
+            <div class="card-body">
+              <p class="card-text">
+                Please scan the qrcode of product for registed product to stock
+              </p>
+              <hr />
+              <div class="alert" :class="alert" role="alert">
+                {{ status }}
+              </div>
+            </div>
+          </v-container>
+        </v-card>
+      </div>
       <div class="col-md-8">
-        <div class="card">
-          <div class="card-header">Product stock lists</div>
-          <div class="main-block mt-3">
+        <v-card class="mt-10">
+          <v-container>
+          <!-- <div class="card-header">Product stock lists</div> -->
+          <div class="main-block">
             <h1>Stock Form</h1>
-            <form>
-              <div>
-                <input
-                  class="fname"
-                  type="text"
-                  name="prod_id"
-                  placeholder="Product ID"
-                  id="prod_id"
-                  value=""
-                />
-                <input
-                  class="fname"
-                  type="text"
-                  name="prod_name"
-                  placeholder="Product Name"
-                  id="prod_name"
-                  value=""
-                />
-                <input
-                  type="number"
-                  name="amount"
-                  placeholder="Amount"
-                  id="amount"
-                  value=""
-                  class="mr-12"
-                />
-                <input
-                  type="number"
-                  name="remaining"
-                  placeholder="Remaining"
-                  id="remaining"
-                  value=""
-                />
-              </div>
-              <h4 class="mt-3">Status</h4>
-              <div class="status">
+            <v-card class="mb-8" color="amber lighten-4">
+              <v-container>
                 <div>
-                  <input type="radio" value="in" id="radioOne" name="status" />
-                  <label for="radioOne" class="radio">Stock-in</label>
+                  <input
+                    class="fname"
+                    type="text"
+                    name="prod_id"
+                    placeholder="Product ID"
+                    id="prod_id"
+                    value=""
+                  />
+                  <input
+                    class="fname"
+                    type="text"
+                    name="prod_name"
+                    placeholder="Product Name"
+                    id="prod_name"
+                    value=""
+                  />
+                  <input
+                    type="number"
+                    name="amount"
+                    placeholder="Amount"
+                    id="amount"
+                    value=""
+                    class="mr-12"
+                  />
+                  <input
+                    type="number"
+                    name="remaining"
+                    placeholder="Remaining"
+                    id="remaining"
+                    value=""
+                  />
                 </div>
-                <div>
-                  <input type="radio" value="out" id="radioTwo" name="status" />
-                  <label for="radioTwo" class="radio">Stock-out</label>
+                <h4 class="mt-3">Status</h4>
+                <div class="status">
+                  <div>
+                    <input
+                      type="radio"
+                      value="in"
+                      id="radioOne"
+                      name="status"
+                    />
+                    <label for="radioOne" class="radio">Stock-in</label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      value="out"
+                      id="radioTwo"
+                      name="status"
+                    />
+                    <label for="radioTwo" class="radio">Stock-out</label>
+                  </div>
                 </div>
-              </div>
-              <button class="button" @click.prevent="addStock()">Submit</button>
-            </form>
+                <button class="button" @click.prevent="addStock()">
+                  Submit
+                </button>
+              </v-container>
+            </v-card>
           </div>
           <!-- <div class="card-body">
             <table class="table table-responsive-sm table-bordered">
@@ -94,21 +125,8 @@
               </tbody>
             </table>
           </div> -->
-        </div>
-      </div>
-      <div class="col-md-4 mt-15">
-        <div class="card" style="width: 18rem">
-          <qrcode-stream @decode="onDecode" @init="onInit" />
-          <div class="card-body">
-            <p class="card-text">
-              Please scan the qrcode of product for registed product to stock
-            </p>
-            <hr />
-            <div class="alert" :class="alert" role="alert">
-              {{ status }}
-            </div>
-          </div>
-        </div>
+          </v-container>
+        </v-card>
       </div>
     </div>
   </div>
@@ -245,9 +263,10 @@ export default {
           alert("Stock successfully updated!");
           document.getElementById("prod_id").value = "";
           document.getElementById("prod_name").value = "";
-          document.getElementByTagName("status").value = "";
           document.getElementById("amount").value = "";
           document.getElementById("remaining").value = "";
+          // document.getElementById("status").value = "";
+          // document.querySelector('input[name="status"]:checked').value = "";
         })
         .catch((error) => {
           console.log(error);
@@ -433,7 +452,7 @@ label.radio:after {
   position: absolute;
   width: 8px;
   height: 4px;
-  top: 5px;
+  top: 10px;
   left: 5px;
   border-bottom: 3px solid #1c87c9;
   border-left: 3px solid #1c87c9;
