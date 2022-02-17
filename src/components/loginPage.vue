@@ -3,11 +3,11 @@
     <v-app :class="{ 'pa-3': $vuetify.breakpoint.smAndUp }" dark>
       <v-row align="center">
         <v-flex sm12 md6 offset-md3>
-          <v-card elevation="4" light tag="section">
+          <v-card class="mx-10" elevation="4" light tag="section" rounded="10">
             <v-card-title>
               <v-layout align-center justify-space-between>
-                <h3 class="headline">
-                  {{ platformName }}
+                <h3>
+                  Login
                 </h3>
               </v-layout>
             </v-card-title>
@@ -32,13 +32,13 @@
             </v-card-text>
             <v-divider></v-divider>
             <v-card-actions :class="{ 'pa-3': $vuetify.breakpoint.smAndUp }">
-              <v-btn
+              <!-- <v-btn
                 color="info"
                 :large="$vuetify.breakpoint.smAndUp"
                 @click="signup"
               >
                 Sign up
-              </v-btn>
+              </v-btn> -->
               <v-btn color="info" @click="forgotPassword" text>
                 Forgot password?
               </v-btn>
